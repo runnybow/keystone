@@ -10,10 +10,6 @@ export default defineConfig({
     ],
     sidebar: {
       '/components/': [
-        // {
-        //   text: '通用组件',
-        //   items: [{ text: 'Button 按钮', link: '/components/button' }],
-        // },
         {
           text: '表单类型',
           items: [
@@ -52,6 +48,31 @@ export default defineConfig({
             {
               text: 'TreeForm 树形表单',
               link: '/components/dynamicForm/tree-form',
+            },
+          ],
+        },
+        {
+          text: '筛选器类型',
+          items: [
+            {
+              text: 'BasicFilter 基础筛选器',
+              link: '/components/filter/basic-filter',
+            },
+            {
+              text: 'DynamicFilter 动态筛选器',
+              link: '/components/filter/dynamic-filter',
+            },
+            {
+              text: 'GroupFilter 分组筛选器',
+              link: '/components/filter/group-filter',
+            },
+            {
+              text: 'SavedFilter 保存筛选器',
+              link: '/components/filter/saved-filter',
+            },
+            {
+              text: 'SmartFilter 智能筛选器',
+              link: '/components/filter/smart-filter',
             },
           ],
         },

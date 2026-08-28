@@ -26,7 +26,8 @@ export interface FieldConfig {
     | 'textarea'
     | 'number'
     | 'date'
-    | 'custom';
+    | 'custom'
+    | 'dynamic-list';
   label: string;
   placeholder?: string;
   defaultValue?: any;
@@ -52,7 +53,7 @@ export interface FieldConfig {
   // number 特有
   min?: number;
   max?: number;
-  step?: number;
+  step?: string;
 
   // 自定义组件
   component?: any;
