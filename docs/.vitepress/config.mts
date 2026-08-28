@@ -1,4 +1,9 @@
 import { defineConfig } from 'vitepress';
+import { fileURLToPath, URL } from 'node:url'
+
+// 🔥 打印路径，确认是否正确
+console.log('@dynamicForm 路径:', resolve(__dirname, '.vitepress/components/DynamicForm'))
+console.log('@filter 路径:', resolve(__dirname, '.vitepress/components/Filter'))
 
 export default defineConfig({
   title: '我的前端作品集',
@@ -6,7 +11,8 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '组件', link: '/components/dynamicForm/basic-form' },
+      { text: '表单', link: '/components/dynamicForm/' },
+      { text: '筛选器', link: '/components/filter/' }
     ],
     sidebar: {
       '/components/': [
