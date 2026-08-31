@@ -248,7 +248,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
-import type { GroupFilterSchema } from './types';
+import type { GroupFilterSchema, FilterGroup, FilterCondition } from './types';
 import { OPERATORS } from './preset';
 
 // ==================== Props ====================

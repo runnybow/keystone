@@ -22,7 +22,7 @@
         <button
           class="btn-export"
           @click="exportData"
-          :disabled="data && data.length === 0"
+          :disabled="localData && localData.length === 0"
         >
           📥 导出 CSV
         </button>
@@ -196,6 +196,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, watch, nextTick } from 'vue';
+import type {TableSchema} from './types'
 
 // ==================== Props & Emits ====================
 const props = defineProps<{

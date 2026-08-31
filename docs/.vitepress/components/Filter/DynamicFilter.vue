@@ -213,7 +213,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import type { DynamicFilterSchema } from './types';
+import type { FilterCondition, DynamicFilterSchema } from './types';
 import { OPERATORS } from './preset';
 
 // ==================== Props ====================
@@ -418,7 +418,7 @@ async function handleSearch() {
     }
 
     // const data = await props.schema.searchFn(conditions.value);
-    emit('search', conditions.value);
+    emit('search', conditions.value, []);
   } catch (error: any) {
     console.error('❌ 筛选失败：', error);
     errorMessage.value = error.message || '筛选失败，请重试';
