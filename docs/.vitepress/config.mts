@@ -1,9 +1,4 @@
 import { defineConfig } from 'vitepress';
-import { fileURLToPath, URL } from 'node:url'
-
-// 🔥 打印路径，确认是否正确
-console.log('@dynamicForm 路径:', resolve(__dirname, '.vitepress/components/DynamicForm'))
-console.log('@filter 路径:', resolve(__dirname, '.vitepress/components/Filter'))
 
 export default defineConfig({
   title: '我的前端作品集',
