@@ -127,7 +127,7 @@
 
 <script setup lang="ts">
 import { ref, reactive, computed, watch, nextTick, onMounted } from 'vue';
-import type { FilterSchema } from 'types';
+import type { FilterField, FilterSchema } from './types';
 
 // ==================== Props ====================
 const props = defineProps<{
@@ -246,7 +246,7 @@ async function handleSearch() {
   try {
     const params = getSearchParams();
     // const data = await props.schema.searchFn(params);
-    emit('search', params);
+    emit('search', params, []);
   } catch (error: any) {
     console.error('❌ 筛选失败：', error);
     errorMessage.value = error.message || '筛选失败，请重试';

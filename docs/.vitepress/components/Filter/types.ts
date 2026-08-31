@@ -39,7 +39,7 @@ export interface FilterField {
     value: any;
     valueStart?: string;
     valueEnd?: string;
-    logic: 'AND' | 'OR';
+    logic?: 'AND' | 'OR';
   }
   
   export interface DynamicFilterSchema {
@@ -73,14 +73,14 @@ export interface FilterField {
     id: string;
     name: string;
     conditions: FilterCondition[];
+    conditionCount: number;
     createdAt: string;
     updatedAt: string;
   }
   
   export interface SavedFilterSchema {
-    fields: FilterField[];
-    searchFn: (conditions: FilterCondition[]) => Promise<any[]>;
-    /** 存储键名（用于 localStorage） */
+    fields: DynamicFilterSchema['fields'];
+    searchFn: DynamicFilterSchema['searchFn'];
     storageKey?: string;
   }
   

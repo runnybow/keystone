@@ -152,7 +152,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue';
-import type { ParsedCondition, SmartFilterSchema } from './types';
+import type { FilterField, ParsedCondition, SmartFilterSchema } from './types';
 import { SMARTOPERATORS } from './preset';
 
 // ==================== Props ====================
@@ -217,7 +217,7 @@ function findField(keyword: string): FilterField | null {
     if (field.label === keyword) return field;
     if (field.key === keyword) return field;
     if (field.aliases && field.aliases.includes(keyword)) return field;
-    if (field.label.includes(keyword)) return field;
+    if (field.label!.includes(keyword)) return field;
     if (field.key.includes(keyword)) return field;
     if (field.aliases) {
       for (const alias of field.aliases) {
@@ -328,10 +328,10 @@ function parseLocal(text: string): ParsedCondition[] {
     const patterns = [field.label, field.key, ...(field.aliases || [])];
 
     for (const pattern of patterns) {
-      const index = text.indexOf(pattern);
+      const index = text.indexOf(pattern!);
       if (index === -1) continue;
 
-      const afterField = text.substring(index + pattern.length).trim();
+      const afterField = text.substring(index + pattern!.length).trim();
 
       let operator = 'eq';
       let operatorLabel = '等于';

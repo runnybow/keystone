@@ -157,23 +157,9 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick, onMounted } from 'vue';
 import DynamicFilter from './DynamicFilter.vue';
-import type { FilterCondition, DynamicFilterSchema } from './DynamicFilter.vue';
+import type { FilterCondition, DynamicFilterSchema, SavedFilterData, SavedFilterSchema } from './types';
 
-// ==================== 类型定义 ====================
-export interface SavedFilterData {
-  id: string;
-  name: string;
-  conditions: FilterCondition[];
-  conditionCount: number;
-  createdAt: string;
-  updatedAt: string;
-}
 
-export interface SavedFilterSchema {
-  fields: DynamicFilterSchema['fields'];
-  searchFn: DynamicFilterSchema['searchFn'];
-  storageKey?: string;
-}
 
 // ==================== Props ====================
 const props = defineProps<{
@@ -355,6 +341,7 @@ function deleteFilter(filterId: string) {
 
 // ==================== localStorage ====================
 function saveToStorage() {
+  if (typeof window === 'undefined') return  // SSR 时跳过
   try {
     localStorage.setItem(storageKey.value, JSON.stringify(savedFilters.value));
   } catch (e) {
@@ -363,6 +350,7 @@ function saveToStorage() {
 }
 
 function loadFromStorage() {
+  if (typeof window === 'undefined') return  // SSR 时跳过
   try {
     const data = localStorage.getItem(storageKey.value);
     if (data) {
@@ -424,7 +412,9 @@ defineExpose({
 });
 
 // ==================== 生命周期 ====================
-loadFromStorage();
+onMounted(() => {
+  loadFromStorage()
+})
 </script>
 
 <style scoped>
